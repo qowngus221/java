@@ -36,6 +36,7 @@ public class C01SystemOut {
 		
 		//''=단일문자 ""=문자열
 		System.out.println("I SAY \"HELLO\"");
+		System.out.println("I SAY \"Hi\"");
 		
 		
 	}
