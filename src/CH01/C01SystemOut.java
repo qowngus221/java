@@ -1,4 +1,4 @@
-package C01;
+package CH01;
 
 public class C01SystemOut {
 
