@@ -39,12 +39,26 @@ public class C0TEST {
 		int score = sc.nextInt();
 		System.out.println("학년을 입력 :");
 		int grade = sc.nextInt();
-		if(score>=70) {
-			if(grade>=4) {
-				
+		
+		if(score>100 && score<0) {
+			System.out.println("경고! 점수가 0미만 100초과했습니다");
+		}
+		else if(grade ==4) {
+			if(score>=70) {
+				System.out.println("합격");
+			}
+			else {
+				System.out.println("불합격");
 			}
 		}
-		
+		else if(grade <4) {
+			if(score>=60) {
+				System.out.println("합격");
+			}
+			else {
+				System.out.println("불합격");
+			}
+		}
 	}
 
 }
