@@ -10,8 +10,8 @@ public class C06EX {
 		// 각 과목당 합 / 평균 구해보세요
 		Scanner sc = new Scanner(System.in);
 		int arr[][] = new int[5][3];
-		arr[0][0] = sc.nextInt();
-		System.out.println(arr[0][0]);
+		
+		
 		
 		
 		
