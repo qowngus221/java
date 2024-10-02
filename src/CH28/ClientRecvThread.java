@@ -1,4 +1,4 @@
-package Ch27;
+package CH28;
 
 import java.io.DataInputStream;
 import java.net.Socket;

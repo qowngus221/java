@@ -12,6 +12,9 @@ public class C00Helloworld 	//클래스영역 - 객체지향 문법 적용단위
 		
 		System.out.println("HELLO hi~"); //라이브러리 메서드 호출
 		System.out.println("hello no");
+		boolean[] a = {true,false,true};
+		int b = a.length;
+		System.out.println(b);
 	}
 
 }
