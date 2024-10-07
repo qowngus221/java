@@ -269,36 +269,36 @@ public class C02WHILE {
 		// *****		
 		//*******
 		
-		int i = 0;
-		while(i<8) {
-			if(i<=3) {
-				int j = 0;
-				int k = 0;
-				while(j<i) {
-					System.out.print(" ");
-					j++;
-				}
-				while(k<7-(i*2)) {    
-					System.out.print("*");
-					k++;
-				}
-			}
-			else {
-				int j = 0;
-				int k = 0;
-				while(j<7-i) {      
-					System.out.print(" ");
-					j++;
-				}
-				while(k<(i*2)-7) {
-					System.out.print("*");
-					k++;
-					
-				}
-			}
-		System.out.println();
-		i++;
-		}
+//		int i = 0;
+//		while(i<8) {
+//			if(i<=3) {
+//				int j = 0;
+//				int k = 0;
+//				while(j<i) {
+//					System.out.print(" ");
+//					j++;
+//				}
+//				while(k<7-(i*2)) {    
+//					System.out.print("*");
+//					k++;
+//				}
+//			}
+//			else {
+//				int j = 0;
+//				int k = 0;
+//				while(j<7-i) {      
+//					System.out.print(" ");
+//					j++;
+//				}
+//				while(k<(i*2)-7) {
+//					System.out.print("*");
+//					k++;
+//					
+//				}
+//			}
+//		System.out.println();
+//		i++;
+//		}
 		
 		
 		
@@ -323,9 +323,9 @@ public class C02WHILE {
 //		
 //		
 		
-//		
-//		Scanner sc = new Scanner(System.in);
-//		int h = sc.nextInt();
+		
+		Scanner sc = new Scanner(System.in);
+		int h = sc.nextInt();
 //		
 //		int i = 0;
 //		while(i<h) {
@@ -356,6 +356,43 @@ public class C02WHILE {
 //			System.out.println();
 //			i++;
 //		}
+		
+		int i = 0;
+		while(i<h) {
+			
+			if(i<4) {
+				int j=0;
+				int k=0;
+				while(j<3-i) {
+					System.out.print(" ");
+					j++;
+					
+				}
+				while(k<(i+1)*2-1) {
+					System.out.print("*");
+					k++;
+				}	
+				}
+			else {
+				int j =0;
+				int k =0;
+				while(j<i-3) {
+					System.out.print(" ");
+					j++;
+				}
+				while(k<13-(2*i)) { 
+					System.out.print("*");
+					k++;
+				}
+			} 
+			System.out.println();
+			i++;
+			
+			
+			
+		}
+		
+		
 	}
 }
 	
