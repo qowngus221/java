@@ -8,7 +8,7 @@ public class Test {
 //		Scanner sc = new Scanner(System.in);
 //		int num =1;	//변수 생성 *찍기 위해 사용
 //		// 값 받기
-//		System.out.print("줄 입력하세요 >");
+//		System.out.print("높이를 입력하세요 >");
 //		int h = sc.nextInt();
 //		//생성
 //		for(int i = 0; i<h;i++) {	// 전체 행 생성
@@ -25,7 +25,7 @@ public class Test {
 		Scanner scan = new Scanner(System.in);
 
 		// 값 받기
-		System.out.print("줄 입력하세요 >");
+		System.out.print("높이를 입력하세요 >");
 		int a = scan.nextInt();
 
 		if (a % 2 == 1) {
