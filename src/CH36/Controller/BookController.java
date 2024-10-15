@@ -3,8 +3,9 @@ package CH36.Controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import CH36.Domain.Dto.BookDto;
-import CH36.Domain.Service.BookServiceImpl;
+import CH36.Domain.Common.Dto.BookDto;
+import CH36.Domain.Common.Service.BookService;
+import CH36.Domain.Common.Service.BookServiceImpl;
 
 public class BookController implements SubController {
 
@@ -15,64 +16,62 @@ public class BookController implements SubController {
 //	/book 		delete(3)		BookDto			boolean
 //	/book 		select(4)		bookCode		BookDto		
 //	/book 		selectAll(5)	x->(변경예정)		List<BookDto>
-			
 	
 	//예외처리함수
 	public Map<String,Object> ExceptionHandler(Exception e){
-		Map<String, Object>exMap = new HashMap();
-		exMap.put("success",false);
-		exMap.put("message",e.getMessage());
+		Map<String,Object> exMap = new HashMap();
+		exMap.put("success", false);
+		exMap.put("message", e.getMessage());
 		exMap.put("exception", e);
-		return exMap; 
+		return exMap;
 	}
 	
-	private BookServiceImpl bookServiceImpl;
-	public BookController() {
+	private BookService bookServiceImpl;
+	
+	public BookController(){
 		try {
 			bookServiceImpl = BookServiceImpl.getInstance();
 		} catch (Exception e) {
 			
-				ExceptionHandler(e);
+			ExceptionHandler(e);
 			
 		}
 	}
+			
 	@Override
 	public Map<String, Object> execute(Map<String, Object> params) {
 		System.out.println("[SC] BookController execute()...");
 		//파라미터 받기 
 		Integer serviceNo =(Integer)params.get("serviceNo");
 		BookDto bookDto = (BookDto)params.get("bookDto");
+		Integer sessionId = (Integer)params.get("sessionId");
 		
 		//뷰전달 변수
-		Map<String, Object> returnvalue = new HashMap();
-		
-		try {
+		Map<String, Object> returnValue = new HashMap();
 			
-
+		try {		
 			switch(serviceNo) {
 				case 1 :	//add
 					System.out.println("[SC] BookController add...");
 					//유효성 확인(Data)
-					if(!isValid(bookDto)) {
+					if(!isValid(bookDto,sessionId)) {
 						//유효성 체크 실패시 처리
-						returnvalue.put("success", false);
-						returnvalue.put("massage", "도서 등록 실패");
-						return returnvalue; 
+						returnValue.put("success", false);
+						returnValue.put("message", "도서 등록 실패");
+						return returnValue;
 					}
-					//서비스 요청
-					System.out.println("[SC] BookController dto : " + bookDto);
 					
-					boolean isAdded =  bookServiceImpl.bookRegistration(bookDto);
+					System.out.println("[SC] BookController dto : " + bookDto);
+					//서비스 요청
+					Map<String,Object> tmp =  bookServiceImpl.bookRegistration(bookDto,sessionId);
 					
 					//뷰로 전달
-					if(isAdded) {
-						returnvalue.put("success", true);
-						returnvalue.put("massage", "도서 등록을 완료하였습니다.");
-					}else {
-						returnvalue.put("success", false);
-						returnvalue.put("massage", "도서 등록을 하지못했습니다.");
-					}
+					boolean isAdded = (Boolean)tmp.get("success");
+					returnValue = tmp;
+					
+					
 					break;
+					
 					
 				case 2 :	//update
 					System.out.println("[SC] BookController update...");
@@ -91,19 +90,27 @@ public class BookController implements SubController {
 	
 			}
 		}catch(Exception e) {
-			return ExceptionHandler(e);
+			return  ExceptionHandler(e);
+			
 		}
-		
-		
-		
-		return returnvalue;
+	
+		return returnValue;
 	}
+	
+
+	private boolean isValid(BookDto bookDto, Integer sessionId) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 	private boolean isValid(BookDto dto) {
 		if(dto.getBookCode()==0)
 			return false;
-		else if(dto.getBookName().trim()==null || dto.getBookName().trim().equals(""))
+		else if ( dto.getBookName().trim()==null || dto.getBookName().trim().equals("") )
 			return false;
 		
 		return true;
 	}
+
 }
+

@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface SubController {
 	
-	Map<String,Object> execute(Map<String,Object>params);
+	Map<String,Object> execute ( Map<String,Object>params );
 }
